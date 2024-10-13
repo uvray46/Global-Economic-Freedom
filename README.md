@@ -157,6 +157,6 @@ Wealth advisors should continually evaluate the evolving global financial landsc
 
 ## Appendix: Code and Data
 
-* [Tax Optimization & Economic Freedom Model](https://github.com/uvray46/Global-Economic-Freedom/commit/fbfc036535471419be400306db615a40378f0321)
-* [CBI Programs & Global Mobility Model](https://github.com/uvray46/Global-Economic-Freedom/commit/ec956ed4f634f372439a4b4342ddb28797e4913e)
-* [Financial Secrecy & Offshore Banking Model](https://github.com/uvray46/Global-Economic-Freedom/commit/30620afd8811cf1d4eadda4556449331adb5f116)
+* [Tax Optimization & Economic Freedom Model](https://github.com/uvray46/Global-Economic-Freedom/blob/main/Tax%20Optimization%20%26%20Economic%20Freedom)
+* [CBI Programs & Global Mobility Model](https://github.com/uvray46/Global-Economic-Freedom/blob/main/CBI%20Programs%20%26%20Global%20Mobility)
+* [Financial Secrecy & Offshore Banking Model](https://github.com/uvray46/Global-Economic-Freedom/blob/main/Financial%20Secrecy%20%26%20Offshore%20Banking)
