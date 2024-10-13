@@ -32,13 +32,13 @@ These countries were selected based on their tax policies, economic freedom scor
 The linear regression and random forest models revealed that lower personal and corporate tax rates were significantly correlated with higher economic freedom scores.
 Countries with low taxes, such as Singapore and Malta, were clustered together based on their favorable tax policies and high economic freedom.
 
-**Visual 1:** Bar Chart Comparing Tax Rates Across Countries
-Summary: This bar chart displays the personal income tax rates, corporate tax rates, and capital gains tax rates across all the countries analyzed. Countries like Singapore and Malta show significantly lower rates compared to others, illustrating their appeal for tax optimization.
+**Visual 1:**
+This bar chart compares the personal income tax rates, corporate tax rates, and capital gains tax rates across all the countries analyzed. Countries like Singapore and Malta show significantly lower rates compared to others, illustrating their appeal for tax optimization.
 
 ![image](https://github.com/user-attachments/assets/98a84ddd-da24-4874-9452-6ee9db81e2b5)
 
-**Visual 2:** PCA Scatter Plot for Economic Freedom and Tax Rates
-Summary: This scatter plot, generated from Principal Component Analysis (PCA), visually clusters countries based on their tax policies and economic freedom index. Countries with low tax rates and high economic freedom, such as Singapore, are distinct from those with higher tax burdens.
+**Visual 2:**
+This scatter plot, generated from Principal Component Analysis (PCA), visually clusters countries based on their tax policies and economic freedom index. Countries with low tax rates and high economic freedom, such as Singapore, are distinct from those with higher tax burdens.
 
 ![image](https://github.com/user-attachments/assets/53d70e17-6e93-4ba4-b899-b3b61174e9fc)
 
@@ -49,13 +49,13 @@ Narrative: Citizenship by Investment (CBI) programs in countries like Malta and 
 Countries with CBI programs were identified using logistic regression and KNN models, which found that political stability, tax rates, and economic freedom were key determinants in the likelihood of a country offering a CBI program.
 Countries with CBI programs provide visa-free travel to a large number of countries, making them ideal for HNWIs seeking global mobility.
 
-**Visual 3:** Bar Chart of Countries with/without CBI Programs
-Summary: This bar chart compares personal income tax rates for countries with and without CBI programs. The chart highlights that countries with CBI programs tend to offer more favorable tax rates, making them attractive for global citizens.
+**Visual 3:**
+This bar chart compares personal income tax rates for countries with and without CBI programs. The chart highlights that countries with CBI programs tend to offer more favorable tax rates, making them attractive for global citizens.
 
 ![image](https://github.com/user-attachments/assets/a1e16968-874f-4822-af4a-74364512add5)
 
-**Visual 4:** Map of Countries Offering CBI Programs
-Summary: A world map displaying the countries that offer CBI programs, along with their associated investment thresholds and visa-free travel benefits. The map visually communicates which countries offer the best opportunities for global mobility and tax benefits.
+**Visual 4:**
+A world map displaying the countries that offer CBI programs, along with their associated investment thresholds and visa-free travel benefits. The map visually communicates which countries offer the best opportunities for global mobility and tax benefits.
 
 ![image](https://github.com/user-attachments/assets/dfbfc148-3f08-4c01-84a4-5458e26e844e)
 
@@ -66,18 +66,18 @@ Narrative: Offshore banking services in countries like Switzerland and Singapore
 The random forest and gradient boosting models highlighted that financial secrecy scores and the number of offshore banking services were the most critical factors in determining high wealth protection.
 Countries like Switzerland and Singapore, with high financial secrecy scores, stood out as top destinations for wealth protection and offshore banking services.
 
-**Visual 5:** Bar Plot of Offshore Banking Services and Financial Secrecy
-Summary: This bar plot shows the financial secrecy score for each country alongside the number of offshore banking services they offer. Switzerland and Singapore rank the highest, making them ideal jurisdictions for wealth protection.
+**Visual 5:**
+This bar plot shows the financial secrecy score for each country alongside the number of offshore banking services they offer. Switzerland and Singapore rank the highest, making them ideal jurisdictions for wealth protection.
 
 ![image](https://github.com/user-attachments/assets/147ccfb6-388b-40bb-a3bf-1bc795369280)
 
-**Visual 6:** PCA Scatter Plot for Countries Based on Offshore Banking
-Summary: A scatter plot generated using PCA, which shows countries clustered based on their financial secrecy score, offshore banking services, and economic freedom index. This plot helps identify which countries offer the strongest wealth protection.
+**Visual 6:**
+A scatter plot generated using PCA, which shows countries clustered based on their financial secrecy score, offshore banking services, and economic freedom index. This plot helps identify which countries offer the strongest wealth protection.
 
 ![image](https://github.com/user-attachments/assets/ed38cb2f-58b2-47ea-a228-e814a43f9973)
 
-**Visual 7:** Heatmap of Financial Secrecy and Banking Correlations
-Summary: A heatmap displaying the correlation between financial secrecy, the number of offshore banking services, economic freedom, and political stability. This visual highlights the relationships between these variables and their role in wealth protection.
+**Visual 7:**
+A heatmap displaying the correlation between financial secrecy, the number of offshore banking services, economic freedom, and political stability. This visual highlights the relationships between these variables and their role in wealth protection.
 
 ![image](https://github.com/user-attachments/assets/01478a7e-929f-434f-b81f-cc7e20f58bb5)
 
@@ -85,8 +85,7 @@ Summary: A heatmap displaying the correlation between financial secrecy, the num
 This analysis used a range of machine learning models, statistical techniques, and visualizations to explore tax optimization, global mobility, and wealth protection across 15 countries from 2020-2023. Below is a summary of the methods used for each insight.
 
 **Insight 1: Tax Optimization & Economic Freedom**
-1. **Linear Regression:** Revealed that lower personal and corporate tax rates are significantly correlated with higher economic freedom, highlighting personal income tax as the most influential factor.
-* The coefficients indicated that personal income tax had the strongest inverse relationship with economic freedom, suggesting that lower income taxes lead to greater economic freedom.
+1. **Linear Regression:** Both models revealed a significant correlation between lower personal and corporate tax rates and higher economic freedom, with personal income tax being the most influential factor.
 2. **Random Forest:** Identified the importance of each tax variable, confirming personal income tax as a key driver of economic freedom.
 3. **Principal Component Analysis (PCA):** Visualized country clusters based on tax rates and economic freedom, showing clear separation between low-tax, high-freedom countries like Singapore and Switzerland.
 4. **Clustering (Cosine Similarity and Distance Metrics):** Grouped countries with similar tax structures, highlighting alternatives for tax optimization strategies.
