@@ -21,6 +21,7 @@ This project focuses on 15 countries, divided into three categories:
 * **Low-Tax Jurisdictions:** Singapore, Switzerland, Malta, Barbados
 * **Countries with Strong Economic Freedom:** New Zealand, Ireland, Estonia, Chile, Cyprus, Saint Lucia, Dominica, Portugal
 * **Major Global Financial Centers:** United States, United Kingdom, Japan
+
 These countries were selected based on their tax policies, economic freedom scores, and relevance to global mobility and wealth protection.
 
 ## Major Insights
