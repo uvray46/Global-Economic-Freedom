@@ -157,4 +157,4 @@ Wealth advisors should continually evaluate the evolving global financial landsc
 
 ## Appendix: Code and Data
 
-[Links to code and datasets for reproducibility.]([https://github.com/uvray46/Global-Economic-Freedom/commit/30620afd8811cf1d4eadda4556449331adb5f116](https://github.com/uvray46/Global-Economic-Freedom/commit/ec956ed4f634f372439a4b4342ddb28797e4913e)https://github.com/uvray46/Global-Economic-Freedom/commit/ec956ed4f634f372439a4b4342ddb28797e4913e)
+([https://github.com/uvray46/Global-Economic-Freedom/commit/30620afd8811cf1d4eadda4556449331adb5f116](https://github.com/uvray46/Global-Economic-Freedom/commit/ec956ed4f634f372439a4b4342ddb28797e4913e)https://github.com/uvray46/Global-Economic-Freedom/commit/ec956ed4f634f372439a4b4342ddb28797e4913e)
