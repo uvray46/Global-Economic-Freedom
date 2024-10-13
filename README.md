@@ -101,22 +101,17 @@ This analysis used a range of machine learning models, statistical techniques, a
 3. **Cosine Similarity:** Highlighted countries with similar wealth protection profiles, emphasizing Switzerland and Singapore as top offshore banking hubs.
 4. **PCA:** Visualized clusters of countries based on financial secrecy and offshore banking services, confirming Switzerland and Singapore as leaders in wealth protection.
 
-## Findings, Analysis, and Implications
-This section outlines the key findings from the analysis, focusing on the three major insights: tax optimization, global mobility through CBI programs, and financial secrecy in offshore banking.
+## Implications
+This section outlines the implications from the key findings, focusing on the three major insights: tax optimization, global mobility through CBI programs, and financial secrecy in offshore banking.
 
 **Insight 1: Tax Optimization & Economic Freedom**
-* **Key Finding:** Countries with lower personal and corporate tax rates, such as Singapore, Malta, and Switzerland, tend to have significantly higher economic freedom scores.
-* **Analysis:** The linear regression and random forest models confirmed that lower tax burdens, particularly on personal income, are closely associated with higher economic freedom. This suggests that countries with low tax regimes also offer regulatory environments that are more favorable to wealth growth and business operations.
 * **Implication for Wealth Advisors:** Advisors can recommend jurisdictions like Singapore and Switzerland for clients looking to reduce tax burdens while maintaining high levels of economic freedom. These countries are optimal for HNWIs aiming to grow wealth under minimal taxation and favorable regulations.
 
 **Insight 2: Global Mobility via CBI Programs**
-* **Key Finding:** Countries offering Citizenship by Investment (CBI) programs, such as Malta and Saint Lucia, also provide lower tax rates and higher political stability, making them attractive for global mobility.
-* **Analysis:** Logistic regression and KNN models identified that political stability, combined with lower tax burdens, is a significant predictor of CBI program availability. These programs enable HNWIs to gain visa-free travel benefits and access favorable tax regimes, making them ideal for global citizens looking to optimize both mobility and taxation.
 * **Implication for Wealth Advisors:** Advisors can recommend CBI programs in countries like Malta and Saint Lucia for clients seeking to diversify their residency options and optimize taxes. These programs provide both financial and mobility advantages, particularly for clients with international investments.
 
 **Insight 3: Financial Secrecy & Offshore Banking**
-* **Key Finding:** Countries with high financial secrecy scores, such as Switzerland and Singapore, are top jurisdictions for wealth protection through offshore banking services.
-* **Analysis:** The random forest and gradient boosting models demonstrated that financial secrecy is the most critical factor in determining high wealth protection. Countries with strong financial secrecy laws and robust offshore banking services, such as Switzerland and Singapore, are preferred destinations for safeguarding assets.
+
 * **Implication for Wealth Advisors:** Advisors should direct clients looking for secure wealth protection to jurisdictions with high financial secrecy and offshore banking services. Switzerland and Singapore remain the leading destinations for those seeking privacy and asset protection in uncertain financial climates.
 
 ## Conclusion
