@@ -1,0 +1,158 @@
+# Import necessary libraries
+import pandas as pd
+import seaborn as sns
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics.pairwise import cosine_similarity, pairwise_distances
+
+# Load the dataset
+file_path = r'C:\Users\jwhit\OneDrive\Documents\Data Science Course\Data Storytelling\global_finance_freedom.xlsx'
+data = pd.read_excel(file_path)
+
+# Filter necessary columns for CBI and mobility analysis
+columns_of_interest = ['country', 'cbi program (usd)', 'personal income tax rate', 'corporate tax rate', 
+                       'economic freedom index score', 'political stability index', 'has cbi program']
+data_subset = data[columns_of_interest].dropna()
+
+# Check the class distribution in the 'has_cbi_program' column
+print("Class distribution in the entire dataset:\n", data_subset['has cbi program'].value_counts())
+
+# Define the features (X) and the target variable (y)
+X = data_subset[['personal income tax rate', 'corporate tax rate', 'economic freedom index score', 'political stability index']]
+y = data_subset['has cbi program']
+
+# Split the dataset into training and testing sets, using stratify to balance classes
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+
+# Check the class distribution in the training set
+print("Training set class distribution:\n", y_train.value_counts())
+
+# Logistic Regression model
+log_reg = LogisticRegression()
+log_reg.fit(X_train, y_train)
+
+# Check the accuracy on the test set
+accuracy = log_reg.score(X_test, y_test)
+print("Logistic Regression Accuracy:", accuracy)
+
+# KNN model
+knn = KNeighborsClassifier()
+
+# Define the parameter grid for KNN
+param_grid = {
+    'n_neighbors': [3, 5, 7, 9],
+    'weights': ['uniform', 'distance'],
+    'metric': ['euclidean', 'manhattan']
+}
+
+# Perform grid search
+grid_search = GridSearchCV(knn, param_grid, cv=5)
+grid_search.fit(X_train, y_train)
+
+# Get the best parameters and accuracy score
+best_knn_params = grid_search.best_params_
+knn_best_score = grid_search.best_score_
+
+# Print the best parameters and accuracy
+print("Best KNN parameters:", best_knn_params)
+print("Best KNN accuracy from cross-validation:", knn_best_score)
+
+# Test the KNN model with the best parameters on the test set
+knn_best = grid_search.best_estimator_
+knn_test_accuracy = knn_best.score(X_test, y_test)
+
+# Print test set accuracy
+print("KNN Test Accuracy:", knn_test_accuracy)
+
+# Calculate cosine similarity between countries based on features relevant to CBI and mobility
+similarity_matrix = cosine_similarity(X)
+
+# Convert similarity matrix to a DataFrame for easy viewing
+similarity_df = pd.DataFrame(similarity_matrix, index=data_subset['country'], columns=data_subset['country'])
+
+# Display cosine similarity matrix
+print("Cosine Similarity Matrix (CBI and Mobility):\n", similarity_df)
+
+# Calculate Euclidean and Manhattan distances
+euclidean_distances = pairwise_distances(X, metric='euclidean')
+manhattan_distances = pairwise_distances(X, metric='manhattan')
+
+# Convert to DataFrame for easy viewing
+euclidean_df = pd.DataFrame(euclidean_distances, index=data_subset['country'], columns=data_subset['country'])
+manhattan_df = pd.DataFrame(manhattan_distances, index=data_subset['country'], columns=data_subset['country'])
+
+# Display distance matrices
+print("Euclidean Distance Matrix (CBI and Mobility):\n", euclidean_df)
+print("\nManhattan Distance Matrix (CBI and Mobility):\n", manhattan_df)
+
+# Standardize the features
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# PCA model
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X_scaled)
+
+# Plot the PCA components for CBI and Mobility features
+plt.figure(figsize=(8, 6))
+plt.scatter(X_pca[:, 0], X_pca[:, 1], c=y, cmap='coolwarm', edgecolor='k')
+plt.xlabel('First Principal Component')
+plt.ylabel('Second Principal Component')
+plt.title('PCA of CBI and Mobility Features')
+plt.colorbar(label='CBI Program (1 = Yes, 0 = No)')
+plt.show()
+
+# Visualization 1: Bar Chart of Countries with/without CBI Programs
+# Create a bar chart to compare tax rates, economic freedom, and political stability for countries with and without CBI programs
+data_subset['CBI Program Label'] = data_subset['has cbi program'].map({1: 'Has CBI Program', 0: 'No CBI Program'})
+
+# Plotting personal income tax rates for countries with/without CBI programs
+plt.figure(figsize=(12, 6))
+sns.barplot(x='CBI Program Label', y='personal income tax rate', data=data_subset)
+plt.title('Personal Income Tax Rates for Countries with and without CBI Programs')
+plt.ylabel('Personal Income Tax Rate')
+plt.xlabel('CBI Program Presence')
+plt.tight_layout()
+plt.show()
+
+# Visualization 2: PCA Plot Highlighting Countries with CBI Programs 
+# Apply PCA to the scaled data (already scaled from the previous analysis)
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X_scaled)
+
+# Create PCA scatter plot, coloring points based on whether the country has a CBI program
+plt.figure(figsize=(10, 6))
+sns.scatterplot(x=X_pca[:, 0], y=X_pca[:, 1], hue=data_subset['has cbi program'], palette='coolwarm', s=100)
+plt.title('PCA of Global Mobility Features (Colored by CBI Program)')
+plt.xlabel('First Principal Component')
+plt.ylabel('Second Principal Component')
+plt.legend(title='CBI Program', labels=['No', 'Yes'])
+plt.tight_layout()
+plt.show()
+
+# Visualization 3: Heatmap of Correlations between Tax Optimization and Political Stability 
+# Generate a correlation matrix
+correlation_matrix = data_subset[['personal income tax rate', 'corporate tax rate', 
+                                  'economic freedom index score', 'political stability index']].corr()
+
+# Create a heatmap
+plt.figure(figsize=(8, 6))
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', linewidths=0.5)
+plt.title('Correlation Heatmap: Tax Optimization, Economic Freedom, and Political Stability')
+plt.tight_layout()
+plt.show()
+
+# Visualization 4: Scatter Plot of Economic Freedom vs. Personal Income Tax
+# Scatter plot to show relationship between Economic Freedom and Personal Income Tax, colored by Political Stability
+plt.figure(figsize=(10, 6))
+sns.scatterplot(x='economic freedom index score', y='personal income tax rate', 
+                hue='political stability index', data=data_subset, palette='viridis', s=100)
+plt.title('Economic Freedom vs. Personal Income Tax (Colored by Political Stability)')
+plt.xlabel('Economic Freedom Index Score')
+plt.ylabel('Personal Income Tax Rate')
+plt.tight_layout()
+plt.show()
