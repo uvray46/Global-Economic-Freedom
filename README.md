@@ -154,3 +154,7 @@ Wealth advisors should continually evaluate the evolving global financial landsc
 10. Tax Justice Network. (2023). "Financial Secrecy Index." Available at: https://fsi.taxjustice.net/
 11. UN DESA - Population Division. (2023). "Global Migration Statistics." Available at: https://www.un.org/en/development/desa/population/
 12. Mercer. (2023). "Cost of Living Rankings." Available at: https://mobilityexchange.mercer.com/Insights/cost-of-living-rankings
+
+## Appendix: Code and Data
+
+[Links to code and datasets for reproducibility.]([https://github.com/uvray46/Global-Economic-Freedom/commit/30620afd8811cf1d4eadda4556449331adb5f116](https://github.com/uvray46/Global-Economic-Freedom/commit/ec956ed4f634f372439a4b4342ddb28797e4913e)https://github.com/uvray46/Global-Economic-Freedom/commit/ec956ed4f634f372439a4b4342ddb28797e4913e)
