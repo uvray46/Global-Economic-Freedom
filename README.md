@@ -1,4 +1,5 @@
-![cover_photo](
+![global-economy](https://github.com/user-attachments/assets/67185b45-8f38-4ff0-8348-b7386190b206)
+
 #Assessing Economic Factors for Financial Freedom: Strategic Insights for Wealth Advisors
 
 Table of Contents
