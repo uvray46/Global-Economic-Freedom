@@ -1,0 +1,158 @@
+# Import necessary libraries
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.decomposition import PCA
+from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.preprocessing import StandardScaler
+
+# Load the dataset
+file_path = r'C:\Users\jwhit\OneDrive\Documents\Data Science Course\Data Storytelling\global_finance_freedom.xlsx'
+data = pd.read_excel(file_path)
+
+# Data Preprocessing 
+# Filter necessary columns for financial secrecy and offshore banking
+columns_of_interest = ['country', 'financial secrecy score', 'num of offshore banking services', 
+                       'economic freedom index score', 'political stability index']
+data_subset = data[columns_of_interest].dropna()
+
+# Create a binary target variable 'high wealth protection' based on financial secrecy score (threshold: 70)
+data_subset['high_wealth_protection'] = (data_subset['financial secrecy score'] > 70).astype(int)
+
+# Define features (X) and target (y)
+X = data_subset[['financial secrecy score', 'num of offshore banking services', 'economic freedom index score', 'political stability index']]
+y = data_subset['high_wealth_protection']
+
+# Split the dataset into training and testing sets, using stratify to ensure balanced classes
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, stratify=y)
+
+# Random Forest Classifier 
+rf_model = RandomForestClassifier(random_state=42)
+rf_model.fit(X_train, y_train)
+
+# Feature importance from Random Forest
+rf_importance = rf_model.feature_importances_
+print("Random Forest Feature Importance:", rf_importance)
+
+# Accuracy on test set
+rf_accuracy = rf_model.score(X_test, y_test)
+print("Random Forest Test Accuracy:", rf_accuracy)
+
+# Gradient Boosting Classifier 
+gb_model = GradientBoostingClassifier(random_state=42)
+gb_model.fit(X_train, y_train)
+
+# Accuracy on test set
+gb_accuracy = gb_model.score(X_test, y_test)
+print("Gradient Boosting Test Accuracy:", gb_accuracy)
+
+#Logistic Regression
+log_reg = LogisticRegression()
+log_reg.fit(X_train, y_train)
+
+# Accuracy on test set
+log_reg_accuracy = log_reg.score(X_test, y_test)
+print("Logistic Regression Test Accuracy:", log_reg_accuracy)
+
+# Calculate cosine similarity between countries based on financial secrecy, offshore banking, and other features
+similarity_matrix = cosine_similarity(X)
+
+# Convert similarity matrix to a DataFrame for easy viewing
+similarity_df = pd.DataFrame(similarity_matrix, index=data_subset['country'], columns=data_subset['country'])
+print("Cosine Similarity Matrix:\n", similarity_df)
+
+# Standardize the data for PCA
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# Apply PCA to visualize countries based on financial secrecy and offshore banking services
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X_scaled)
+
+# Create a scatter plot of the first two principal components
+plt.figure(figsize=(10, 6))
+sns.scatterplot(x=X_pca[:, 0], y=X_pca[:, 1], hue=data_subset['high_wealth_protection'], palette='coolwarm', s=100)
+plt.title('PCA of Financial Secrecy and Offshore Banking (Colored by Wealth Protection)')
+plt.xlabel('First Principal Component')
+plt.ylabel('Second Principal Component')
+plt.legend(title='High Wealth Protection', labels=['No', 'Yes'])
+plt.tight_layout()
+plt.show()
+
+# Visualization 1: Bar Plot of Offshore Banking Services and Financial Secrecy 
+# Create a bar plot to show offshore banking services and financial secrecy score for each country
+plt.figure(figsize=(12, 6))  # Increase the figure size to give more space
+sns.barplot(x='country', y='financial secrecy score', data=data_subset, color='blue')
+plt.title('Financial Secrecy Score by Country')
+plt.xlabel('Country')
+plt.ylabel('Financial Secrecy Score')
+plt.xticks(rotation=90)  # Rotate country names vertically
+plt.tight_layout()
+plt.show()
+
+# Offshore Banking Services and Financial Secrecy Bar Chart
+fig, ax1 = plt.subplots(figsize=(12, 6))  # Increase figure size
+
+# Plot the number of offshore banking services on the first y-axis
+sns.barplot(x='country', y='num of offshore banking services', data=data_subset, color='salmon', ax=ax1)
+ax1.set_xlabel('Country')
+ax1.set_ylabel('Number of Offshore Banking Services', color='salmon')
+plt.xticks(rotation=90)  # Rotate country names vertically
+
+# Plot financial secrecy score on the second y-axis
+ax2 = ax1.twinx()  # Create a second y-axis
+sns.lineplot(x='country', y='financial secrecy score', data=data_subset, color='blue', ax=ax2)
+ax2.set_ylabel('Financial Secrecy Score', color='blue')
+
+plt.title('Offshore Banking Services and Financial Secrecy Score by Country')
+plt.tight_layout()
+plt.show()
+
+# Visualization 2: PCA Scatter Plot for Countries 
+# Apply PCA for dimensionality reduction
+# Standardize the features before applying PCA
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(data_subset[['financial secrecy score', 'num of offshore banking services', 
+                                             'economic freedom index score', 'political stability index']])
+
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X_scaled)
+
+# Create a PCA scatter plot
+plt.figure(figsize=(10, 6))
+sns.scatterplot(x=X_pca[:, 0], y=X_pca[:, 1], hue=data_subset['financial secrecy score'], palette='coolwarm', s=100)
+plt.title('PCA of Countries Based on Offshore Banking and Financial Secrecy')
+plt.xlabel('First Principal Component')
+plt.ylabel('Second Principal Component')
+plt.tight_layout()
+plt.show()
+
+# Visualization 3: Heatmap of Correlations 
+# Create a heatmap showing correlations between financial secrecy, offshore banking, and other features
+correlation_matrix = data_subset[['financial secrecy score', 'num of offshore banking services', 
+                                  'economic freedom index score', 'political stability index']].corr()
+
+plt.figure(figsize=(8, 6))
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', linewidths=0.5)
+plt.title('Correlation Heatmap: Financial Secrecy, Offshore Banking, Economic Freedom, and Political Stability')
+plt.tight_layout()
+plt.show()
+
+# Visualization 4: Cosine Similarity Matrix
+# Calculate cosine similarity between countries based on their features
+similarity_matrix = cosine_similarity(data_subset[['financial secrecy score', 'num of offshore banking services', 
+                                                   'economic freedom index score', 'political stability index']])
+
+# Convert to a DataFrame for easy viewing
+similarity_df = pd.DataFrame(similarity_matrix, index=data_subset['country'], columns=data_subset['country'])
+
+# Plot a heatmap of cosine similarity
+plt.figure(figsize=(10, 8))
+sns.heatmap(similarity_df, cmap='coolwarm', linewidths=0.5)
+plt.title('Cosine Similarity Between Countries Based on Financial Secrecy and Offshore Banking')
+plt.tight_layout()
+plt.show()
