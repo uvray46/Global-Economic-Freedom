@@ -1,48 +1,33 @@
 ![World-Economic-Freedom](https://github.com/user-attachments/assets/5dc2a03b-846d-4127-b5e7-46c711f20be7)
 
-#Assessing Economic Factors for Financial Freedom: Strategic Insights for Wealth Advisors
+# Assessing Economic Factors for Financial Freedom: Strategic Insights for Wealth Advisors
 
-Table of Contents
-Introduction
-Project Overview
-Audience and Purpose
-Key Research Questions
-Countries Analyzed
-Major Insights
-6.1 Insight 1: Tax Optimization & Economic Freedom
-6.2 Insight 2: Global Mobility via CBI Programs
-6.3 Insight 3: Financial Secrecy & Offshore Banking
-Methodology
-Findings and Analysis
-Impact and Implications
-Conclusion
-References
-Appendix: Code and Data
-Introduction
+## Introduction
 In a rapidly globalizing world, protecting and optimizing wealth has become more complex for high-net-worth individuals (HNWIs) and global citizens. Wealth advisors play a critical role in guiding their clients through this intricate landscape, helping them minimize taxes, increase global mobility, and ensure financial privacy. This research project assesses global economic factors and identifies the countries that offer the most favorable environments for wealth protection and tax efficiency.
 
-The focus of this paper is on three major areas: Tax Optimization, Global Mobility via Citizenship by Investment (CBI) Programs, and Financial Secrecy & Offshore Banking. By leveraging data from 2020-2023, this analysis provides actionable insights for wealth advisors on how to advise clients in the global marketplace.
+The focus of this research is on three major areas: Tax Optimization, Global Mobility via Citizenship by Investment (CBI) Programs, and Financial Secrecy & Offshore Banking. By leveraging data from 2020-2023, this analysis provides actionable insights for wealth advisors on how to advise clients in the global marketplace.
 
-Project Overview
+## Project Overview
 This project examines the financial and economic factors across 15 countries, chosen for their tax policies, global mobility programs, and wealth protection services. By analyzing tax rates, economic freedom indices, financial secrecy, and offshore banking, the goal is to provide wealth advisors with the data-driven insights they need to optimize their clients' financial strategies.
 
-Audience and Purpose
+## Audience and Purpose
 The primary audience for this research includes wealth advisors, financial planners, and investment consultants who help HNWIs manage global wealth strategies. The paper will address the key questions relevant to optimizing taxes, increasing global mobility, and protecting wealth through offshore banking.
 
-Key Research Questions
-Which countries offer the most favorable tax environments for minimizing personal and corporate tax burdens?
-How do CBI programs provide greater global mobility and tax advantages?
-Which countries offer the highest levels of financial secrecy and offshore banking services for wealth protection?
-Countries Analyzed
+## Key Research Questions
+1. Which countries offer the most favorable tax environments for minimizing personal and corporate tax burdens?
+2. How do CBI programs provide greater global mobility and tax advantages?
+3. Which countries offer the highest levels of financial secrecy and offshore banking services for wealth protection?
+
+## Countries Analyzed
 This project focuses on 15 countries, divided into three categories:
 
-Low-Tax Jurisdictions: Singapore, Switzerland, Malta, Barbados
-Countries with Strong Economic Freedom: New Zealand, Ireland, Estonia, Chile, Cyprus, Saint Lucia, Dominica, Portugal
-Major Global Financial Centers: United States, United Kingdom, Japan
+* **Low-Tax Jurisdictions:** Singapore, Switzerland, Malta, Barbados
+* **Countries with Strong Economic Freedom:** New Zealand, Ireland, Estonia, Chile, Cyprus, Saint Lucia, Dominica, Portugal
+* **Major Global Financial Centers:** United States, United Kingdom, Japan
 These countries were selected based on their tax policies, economic freedom scores, and relevance to global mobility and wealth protection.
 
-Major Insights
-Insight 1: Tax Optimization & Economic Freedom
+## Major Insights
+### Insight 1: Tax Optimization & Economic Freedom
 Narrative: Countries like Singapore, Switzerland, and Malta provide some of the most attractive tax environments for HNWIs. Low personal income tax, corporate tax, and capital gains tax rates make these countries ideal for wealth growth.
 
 Key Findings:
