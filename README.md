@@ -10,9 +10,6 @@ The focus of this research is on three major areas: Tax Optimization, Global Mob
 ## Project Overview
 This project examines the financial and economic factors across 15 countries, chosen for their tax policies, global mobility programs, and wealth protection services. By analyzing tax rates, economic freedom indices, financial secrecy, and offshore banking, the goal is to provide wealth advisors with the data-driven insights they need to optimize their clients' financial strategies.
 
-## Audience and Purpose
-The primary audience for this research includes wealth advisors, financial planners, and investment consultants who help HNWIs manage global wealth strategies. The paper will address the key questions relevant to optimizing taxes, increasing global mobility, and protecting wealth through offshore banking.
-
 ## Key Research Questions
 1. Which countries offer the most favorable tax environments for minimizing personal and corporate tax burdens?
 2. How do CBI programs provide greater global mobility and tax advantages?
