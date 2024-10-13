@@ -102,7 +102,7 @@ This analysis used a range of machine learning models, statistical techniques, a
 4. **PCA:** Visualized clusters of countries based on financial secrecy and offshore banking services, confirming Switzerland and Singapore as leaders in wealth protection.
 
 ## Findings, Analysis, and Implications
-This section outlines the key findings from the analysis, focusing on the three major insights: tax optimization, global mobility through CBI programs, and financial secrecy in offshore banking. Each finding is based on statistical models and machine learning techniques used to uncover actionable trends in global economic factors.
+This section outlines the key findings from the analysis, focusing on the three major insights: tax optimization, global mobility through CBI programs, and financial secrecy in offshore banking.
 
 **Insight 1: Tax Optimization & Economic Freedom**
 * **Key Finding:** Countries with lower personal and corporate tax rates, such as Singapore, Malta, and Switzerland, tend to have significantly higher economic freedom scores.
