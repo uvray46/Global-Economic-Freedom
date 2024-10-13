@@ -1,5 +1,6 @@
-Assessing Economic Factors for Financial Freedom: Strategic Insights for Wealth Advisors
-Author: [Your Name]
+![cover_photo](
+#Assessing Economic Factors for Financial Freedom: Strategic Insights for Wealth Advisors
+
 Table of Contents
 Introduction
 Project Overview
