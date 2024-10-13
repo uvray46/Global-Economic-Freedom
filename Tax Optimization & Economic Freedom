@@ -1,0 +1,191 @@
+# Tax Optimization & Economic Freedom
+# Import necessary libraries
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.metrics import pairwise_distances
+import seaborn as sns
+from scipy.cluster.hierarchy import dendrogram, linkage
+
+# Load the dataset
+file_path = r'C:\Users\jwhit\OneDrive\Documents\Data Science Course\Data Storytelling\global_finance_freedom.xlsx'
+data = pd.read_excel(file_path)
+
+# Select the necessary columns for analysis
+columns_of_interest = ['personal income tax rate', 'corporate tax rate', 'cgt rate', 'economic freedom index score']
+data_subset = data[columns_of_interest].dropna()
+
+# Define the features (X) and target variable (y)
+X = data_subset[['personal income tax rate', 'corporate tax rate', 'cgt rate']]
+y = data_subset['economic freedom index score']
+
+# Split the dataset into training and test sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Linear Regression model
+linear_reg = LinearRegression()
+linear_reg.fit(X_train, y_train)
+
+# Predicting and getting the coefficients
+y_pred = linear_reg.predict(X_test)
+coefficients = linear_reg.coef_
+
+# Display the coefficients and R^2 score of the model
+print("Coefficients:", coefficients)
+print("R^2 score:", linear_reg.score(X_test, y_test))
+Coefficients: [-0.35916682 -0.29303391  0.26960316]
+R^2 score: 0.7180708546841015
+
+# Random Forest model
+rf_model = RandomForestRegressor(n_estimators=100, random_state=42)
+rf_model.fit(X_train, y_train)
+
+# Feature importance
+importance = rf_model.feature_importances_
+
+# Display feature importance and R^2 score of the model
+print("Feature Importances:", importance)
+print("R^2 score:", rf_model.score(X_test, y_test))
+
+# Standardize the data
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# PCA model
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X_scaled)
+
+# Plot the PCA components
+plt.figure(figsize=(8, 6))
+plt.scatter(X_pca[:, 0], X_pca[:, 1], c=y, cmap='viridis')
+plt.xlabel('First Principal Component')
+plt.ylabel('Second Principal Component')
+plt.title('PCA of Tax Rates and Economic Freedom')
+plt.colorbar(label='Economic Freedom Index')
+plt.show()
+
+# Calculate cosine similarity between countries based on their tax rates
+similarity_matrix = cosine_similarity(X)
+
+# Convert similarity matrix to a DataFrame for easy viewing
+similarity_df = pd.DataFrame(similarity_matrix, index=data_subset.index, columns=data_subset.index)
+
+# Display the similarity matrix
+print(similarity_df)
+
+# Calculate Euclidean and Manhattan distances
+euclidean_distances = pairwise_distances(X, metric='euclidean')
+manhattan_distances = pairwise_distances(X, metric='manhattan')
+
+# Convert to DataFrame for easy viewing
+euclidean_df = pd.DataFrame(euclidean_distances, index=data_subset.index, columns=data_subset.index)
+manhattan_df = pd.DataFrame(manhattan_distances, index=data_subset.index, columns=data_subset.index)
+
+# Display distance matrices
+print("Euclidean Distance Matrix:")
+print(euclidean_df)
+
+print("\nManhattan Distance Matrix:")
+print(manhattan_df)
+
+# 1. Bar Plot of Tax Rates Across Countries
+plt.figure(figsize=(10, 6))
+data_subset.plot(kind='bar', width=0.8)
+plt.title('Comparison of Tax Rates Across Countries')
+plt.xlabel('Countries')
+plt.ylabel('Tax Rates')
+plt.xticks(rotation=90)
+plt.legend(['Personal Income Tax Rate', 'Corporate Tax Rate', 'Capital Gains Tax Rate'])
+plt.show()
+
+# 2. Correlation Heatmap
+correlation_matrix = data_subset.corr()
+plt.figure(figsize=(8, 6))
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', linewidths=0.5)
+plt.title('Correlation Heatmap of Tax Rates and Economic Freedom')
+plt.show()
+
+# 3. Feature Importance from Random Forest (Bar Plot)
+plt.figure(figsize=(8, 6))
+plt.barh(['Personal Income Tax Rate', 'Corporate Tax Rate', 'Capital Gains Tax Rate'], importance, color='skyblue')
+plt.title('Feature Importance of Tax Variables in Predicting Economic Freedom')
+plt.xlabel('Importance')
+plt.ylabel('Tax Variables')
+plt.show()
+
+# 4. Cluster Map of Similar Countries Based on Tax Rates
+Z = linkage(X, method='ward')
+plt.figure(figsize=(10, 7))
+dendrogram(Z, labels=data_subset.index)
+plt.title('Dendrogram of Countries Based on Tax Rates')
+plt.xlabel('Countries')
+plt.ylabel('Distance')
+plt.xticks(rotation=90)
+plt.show()
+
+# 5. Scatter Plot of FDI Inflows/Outflows vs. Economic Freedom
+# Assuming FDI inflows and outflows are in the dataset
+# Filter out missing values in both fdi_inflows and y
+fdi_inflows = data['fdi inflow ($ million)'].dropna()
+common_index = fdi_inflows.index.intersection(y.index)
+fdi_inflows = fdi_inflows.loc[common_index]
+y_filtered = y.loc[common_index]
+
+# Scatter plot of FDI Inflows vs Economic Freedom
+plt.figure(figsize=(8, 6))
+plt.scatter(fdi_inflows, y_filtered)
+plt.title('FDI Inflows vs Economic Freedom')
+plt.xlabel('FDI Inflows ($ million)')
+plt.ylabel('Economic Freedom Index Score')
+plt.show()
+
+# Filter out missing values in both fdi_outflows and y, aligning them by the intersection of their indices
+fdi_outflows = data['fdi outflow ($ million)'].dropna()
+common_index_outflows = fdi_outflows.index.intersection(y.index)
+fdi_outflows = fdi_outflows.loc[common_index_outflows]
+y_filtered_outflows = y.loc[common_index_outflows]
+
+# Scatter plot of FDI Outflows vs Economic Freedom
+plt.figure(figsize=(8, 6))
+plt.scatter(fdi_outflows, y_filtered_outflows)
+plt.title('FDI Outflows vs Economic Freedom')
+plt.xlabel('FDI Outflows ($ million)')
+plt.ylabel('Economic Freedom Index Score')
+plt.show()
+
+# Check the presence of the missing countries for 2022 and 2023
+missing_countries = ['Barbados', 'Dominica', 'New Zealand', 'Saint Lucia', 'Singapore', 'Switzerland']
+
+# Check if these countries are present in the full dataset, regardless of year
+present_in_data = data[data['country'].isin(missing_countries)]
+print("Presence of missing countries in the full dataset:\n", present_in_data[['country', 'year']])
+
+# Check if these countries are in the dataset for 2022 and 2023
+data_filtered = data[data['year'].isin([2022, 2023])]
+missing_in_data = data_filtered[data_filtered['country'].isin(missing_countries)]
+print("Presence of missing countries in 2022 and 2023:\n", missing_in_data[['country', 'year', 'personal income tax rate', 'corporate tax rate', 'cgt rate']])
+
+# Even if some tax rates are missing, allow these countries to be included
+
+# Select necessary columns, but don't drop rows with missing values
+columns_of_interest = ['country', 'personal income tax rate', 'corporate tax rate', 'cgt rate']
+data_subset = data_filtered[columns_of_interest]
+
+# Set the 'country' column as the index, even with missing data
+data_subset.set_index('country', inplace=True)
+
+# Create the bar plot, allowing for missing values
+plt.figure(figsize=(12, 8))
+data_subset.plot(kind='bar', width=0.8)
+plt.title('Comparison of Tax Rates Across Countries (2022-2023)')
+plt.xlabel('Countries')
+plt.ylabel('Tax Rates')
+plt.xticks(rotation=90)
+plt.legend(['Personal Income Tax Rate', 'Corporate Tax Rate', 'Capital Gains Tax Rate'])
+plt.tight_layout()  # Adjust layout to ensure everything fits well
+plt.show()
