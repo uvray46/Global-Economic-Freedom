@@ -43,7 +43,7 @@ This scatter plot, generated from Principal Component Analysis (PCA), visually c
 ![image](https://github.com/user-attachments/assets/53d70e17-6e93-4ba4-b899-b3b61174e9fc)
 
 ### Insight 2: Global Mobility via CBI Programs
-Narrative: Citizenship by Investment (CBI) programs in countries like Malta and Saint Lucia offer visa-free travel and favorable tax regimes, giving HNWIs the flexibility to move both their assets and themselves across borders.
+**Narrative:** Citizenship by Investment (CBI) programs in countries like Malta and Saint Lucia offer visa-free travel and favorable tax regimes, giving HNWIs the flexibility to move both their assets and themselves across borders.
 
 **Key Findings:**
 Countries with CBI programs were identified using logistic regression and KNN models, which found that political stability, tax rates, and economic freedom were key determinants in the likelihood of a country offering a CBI program.
@@ -60,7 +60,7 @@ A world map displaying the countries that offer CBI programs, along with their a
 ![image](https://github.com/user-attachments/assets/dfbfc148-3f08-4c01-84a4-5458e26e844e)
 
 ### Insight 3: Financial Secrecy & Offshore Banking
-Narrative: Offshore banking services in countries like Switzerland and Singapore offer unparalleled financial privacy, making them ideal for wealth protection in uncertain times.
+**Narrative:** Offshore banking services in countries like Switzerland and Singapore offer unparalleled financial privacy, making them ideal for wealth protection in uncertain times.
 
 **Key Findings:**
 The random forest and gradient boosting models highlighted that financial secrecy scores and the number of offshore banking services were the most critical factors in determining high wealth protection.
